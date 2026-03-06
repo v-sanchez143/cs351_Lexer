@@ -66,7 +66,7 @@ def CutOneLineTokens(code):
 #GUI
 ####################
 
-class MyFirstGUI(tk.Tk()): #class definitions
+class MyFirstGUI(): #class definitions
         #init the function for a class
         #variables belonging to this class will get created and init in a fucntion
         #using self.functionName calls functions in this class
@@ -77,15 +77,15 @@ class MyFirstGUI(tk.Tk()): #class definitions
             self.master = root
             self.master.title("Code Slicer")
             self.master.geometry("800x500")
-            self.label = tk.Label(self.master, text = "Lexical Analysis for TinyPie")
+            self.label = tk.Label(self.master, text = "Lexical Analysis for TinyPie", font=('Arial', 18), fg='white', bg='light blue')
             self.label.grid(row=0, column=0)
 
             #source code box
-            #self.sourceLabel = tk.Label(self.master, text="Source Code Input: ")
-            #self.sourceLabel.grid(column=1, row=2, padx=0, pady=10)
-            #self.sourceEntry = tk.Entry(self.master) #entry box
-           # self.sourceEntry.grid(row=0, column=1) #places entry box
-
+            self.sourceLabel = tk.Label(self.master, text="Source Code Input: ")
+            self.sourceLabel.grid(row=2, column=0, padx=0, pady=10)
+            self.sourceEntry = tk.Entry(self.master, bd=5, justify="center", textvariable = tk.StringVar(), font=('Arial', 12)) #entry box
+            self.sourceEntry.grid(row=3, column=0) #places entry box
+            self.sourceEntry.place(x=60,y=100, width = 180, height=200)
             #current processing box
 
 
