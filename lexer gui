@@ -1,0 +1,58 @@
+#This is a simple lexer gui
+
+from tkinter import *
+
+class LexerGUI: #class definition
+    def __init__(self, root):
+        # Master is the default parent object of all widgets.
+        # You can think of it as the window that pops up when you run the GUI code.
+        self.master = root
+        self.master.title("Lexical Analyzer for Tinypie")
+
+        self.current_line=0
+        self.lines= []
+
+        #title of headers
+        self.input_label = Label(self.master, text="Source code input: ")
+        self.input_label.grid(row=0, column=0, sticky=W)
+
+        self.output_label = Label(self.master, text="Lexical Analyzed Result:")
+        self.output_label.grid(row=0, column=1, sticky=W)
+
+        #text boxes#
+        self.input_box = Text(self.master, width=40, height=15)
+        self.input_box.grid(row=1, column=0, padx=5, pady=5)
+
+        self.output_box = Text(self.master, width=40, height=15)
+        self.output_box.grid(row=1, column=1, padx=5, pady=5)
+
+        #label for current line
+        self.line_label= Label(self.master, text="Line number: 0")
+        self.line_label.grid(row=2, column=0, sticky=W)
+
+        #buttons
+        self.next_button=Button(self.master, text="Next", command=self.next_line)
+        self.next_button.grid(row=2, column=1, pady=10)
+
+        self.quit_button = Button(self.master, text="Quit", command=self.master.quit)
+        self.quit_button.grid(row=2, column=2, pady=10)
+
+    def next_line(self):
+
+        #first click will store all the lines
+        if self.current_line == 0:
+            text=self.input_box.get("1.0", END)
+            self.lines=text.splitlines()
+        #now it has all the lines the first time and splits them based on new line character#
+        if self.current_line < len(self.lines):
+            line_to_check=self.lines[self.current_line]
+            self.output_box.insert(END, line_to_check + "\n")
+            self.current_line+=1
+            self.line_label.config(
+                text="Current Line : " + str(self.current_line)
+            )
+
+if __name__ == "__main__":
+    myTKRoot=Tk()
+    myTKgui=LexerGUI(myTKRoot)
+    myTKRoot.mainloop()
