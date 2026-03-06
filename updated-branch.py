@@ -1,21 +1,11 @@
 #Purpose = Building a lexer to break down a line of code into tokens (listed above)
 
 import re
+import tkinter as tk
 
-################
-#TOKEN TYPES
-################
-
-#TT_OPERATOR = "\+|\=|\>|\*" #find any     +  =  >  *     symbols
-#TT_KEYWORDS = "(\\bint\\b|\\bfloat\\b|\\bif\\b|\\belse\\b)" #find any    if  else  int  float   keywords
-#TT_SEPARATORS = "\(|\)|\:|\;|:" #find any    (  )  :  "  ;     symbols
-#TT_IDENTIFIERS = "[A-Za-z]\w*" #find any letters OR letters followed by digits
-#TT_INT_LITERAL = "^[\d]+&" #finds only intergers
-#TT_FLOAT_LITERAL = "\d+\.\d+" #finds only floats
-#TT_STRING_LITERAL = "\"[a-zA-Z]+\"" #finds only strings
-
-
-
+####################
+#Token splitting code
+#####################
 def CutOneLineTokens(code):
         tokenList = []
         new_code = code.strip()
@@ -72,7 +62,38 @@ def CutOneLineTokens(code):
            # count += len(token.group())
            # print("looping back...")
 
+########################
+#GUI
+####################
 
+class MyFirstGUI(tk.Tk()): #class definitions
+        #init the function for a class
+        #variables belonging to this class will get created and init in a fucntion
+        #using self.functionName calls functions in this class
+        #using self.variableName creates and uses varables belonging to this class
+        #must be first parameter in all functions in the class
+        def __init__(self, root):
+            #master is the default parent obj of all widgets
+            self.master = root
+            self.master.title("Code Slicer")
+            self.master.geometry("800x500")
+            self.label = tk.Label(self.master, text = "Lexical Analysis for TinyPie")
+            self.label.grid(row=0, column=0)
+
+            #source code box
+            #self.sourceLabel = tk.Label(self.master, text="Source Code Input: ")
+            #self.sourceLabel.grid(column=1, row=2, padx=0, pady=10)
+            #self.sourceEntry = tk.Entry(self.master) #entry box
+           # self.sourceEntry.grid(row=0, column=1) #places entry box
+
+            #current processing box
+
+
+            #next line button
+
+            #laxical analyzed result box
+
+            #quit button
 
 
 
@@ -91,5 +112,7 @@ def main():
 
 
 
-if __name__ == "__main__":
-     main()
+if __name__ == '__main__':
+    myTkRoot = tk.Tk()
+    my_gui = MyFirstGUI(myTkRoot)
+    myTkRoot.mainloop()
