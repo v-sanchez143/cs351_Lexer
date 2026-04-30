@@ -81,7 +81,20 @@ class ParserGUI(LexerGUI): #class def for parser
         #text boxes#
         self.parser_box = Text(self.master, width=40, height=15)
         self.parser_box.grid(row=1, column=3, padx=5, pady=5)
-   # def parser(self):
+    def parser(self):
+
+        Mytokens = [("keyword", "float"), ("id", "myVar"), ("id", "mynum"), ("op", "="), ("op", "+"), ("op",
+                                                                                                       "*"),
+                    ("int", "6"), ("int", "7"), ("float", "4.3"), ("float", "2.1"), ("float", "3.4"), ("sep", ";")]
+        inToken = ("empty", "empty")
+
+        def accept_token():
+            global inToken
+
+        print(" accept token from the list:" + inToken[1])
+
+       # def math():
+            #if the first word is a keyword go to accepts token to check it
 
 
 
